@@ -29,20 +29,20 @@ public class WebTest {
       //сколько в массиве строк, столько раз будет запущен тест
       @ParameterizedTest(name = "Проверка числа результатов поиска в Яндексе для запроса {0}")//{0} -т.к 1 параметр
       //нужно обозначить тестовые данные с помощью аннотации "ValueSource"
-        void yandexSearchCommonTest(String testData){
+      void yandexSearchCommonTest(String testData){
           open("https://ya.ru");
           $("#text").setValue(testData);
           $("button[type='submit']").click();
           $$("li.serp-item").shouldHave(CollectionCondition.size(10))
-                    .first()//проверка первого результат в поиске
-                    .shouldHave(text(testData));
-    }
+                  .first()//проверка первого результат в поиске
+                  .shouldHave(text(testData));
+      }
 
     @CsvSource({//аналогично аннотации ValueSource, но несколько параметров,
             // если запятая это часть текста, то тогда delimiter = '|' - можно использовать как разделитель
             "Selenide","Selenide - это фреймворк для автоматизированного тестирования",
             "JUnit, JUnit.org"
-               }
+    }
     )
     @ParameterizedTest(name = "Проверка числа результатов поиска в Яндексе для запроса {0}")//{0} -т.к 1 параметр
         //нужно обозначить тестовые данные с помощью аннотации "ValueSource"
