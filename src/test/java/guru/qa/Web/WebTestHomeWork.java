@@ -55,5 +55,4 @@ public class WebTestHomeWork {
         $$(".language-switcher__item").find(text(locale.name())).shouldBe(visible);
 
     }
-
 }
